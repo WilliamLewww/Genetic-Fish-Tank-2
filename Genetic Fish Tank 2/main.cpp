@@ -4,6 +4,8 @@ void LoadContent();
 void Update(int gameTime);
 void Render(SDL_Window* window, SDL_GLContext context);
 
+Fish testFish;
+
 SDL_Event event;
 SDL_GLContext context;
 
@@ -44,11 +46,11 @@ int main(int argc, char *argv[]) {
 }
 
 void LoadContent() {
-
+	testFish.LoadContent();
 }
 
 void Update(int gameTime) {
-
+	testFish.Update(gameTime);
 }
 
 void Render(SDL_Window* window, SDL_GLContext context) {
@@ -56,8 +58,8 @@ void Render(SDL_Window* window, SDL_GLContext context) {
 	glClearColor(ConvertColor(69), ConvertColor(177), ConvertColor(237), 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	testFish.Draw();
 
 	SDL_GL_SwapWindow(window);
 }
