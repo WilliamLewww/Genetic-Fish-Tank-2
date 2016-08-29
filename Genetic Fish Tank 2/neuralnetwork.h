@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
-#include <cstdio>
-#include <iostream>
+#include <time.h>
+
+const double e = 2.71828182845904523536;
 
 struct Synapse;
 
 struct Neuron {
-	int value;
+	double value = 0;
 	std::vector<Synapse> synapseList;
 };
 
@@ -14,8 +15,8 @@ struct Synapse {
 	Neuron* connectedNeuron;
 	double weight;
 
-	Synapse(Neuron neuron, double weightParam) {
-		connectedNeuron = &neuron;
+	Synapse(Neuron* neuron, double weightParam) {
+		connectedNeuron = neuron;
 		weight = weightParam;
 	}
 };
@@ -29,3 +30,4 @@ struct NeuralNetwork {
 
 void SetupLayer(std::vector<Neuron>& layer, int count);
 void SetupConnectionsRandom(NeuralNetwork& network);
+void UpdateNetwork(NeuralNetwork& network);

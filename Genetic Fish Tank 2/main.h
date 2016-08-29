@@ -1,4 +1,5 @@
 #pragma once
+#include <time.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include "input.h"
