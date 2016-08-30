@@ -22,9 +22,9 @@ void DrawTriangle(Vector2 position, int width, int height) {
 
 void DrawTriangle(Vector2 position, int width, int height, double angle) {
 	Vector2 vectors[3]{
+		Vector2(0, 1),
+		Vector2(1, .5),
 		Vector2(0, 0),
-		Vector2(.5, 1),
-		Vector2(1, 0),
 	};
 
 	glMatrixMode(GL_MODELVIEW);

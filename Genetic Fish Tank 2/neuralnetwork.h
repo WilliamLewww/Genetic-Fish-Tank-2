@@ -31,3 +31,4 @@ struct NeuralNetwork {
 void SetupLayer(std::vector<Neuron>& layer, int count);
 void SetupConnectionsRandom(NeuralNetwork& network);
 void UpdateNetwork(NeuralNetwork& network);
+void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value);

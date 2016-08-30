@@ -46,3 +46,8 @@ void UpdateNetwork(NeuralNetwork& network) {
 		network.outputLayer[x].value = Sigmoid(network.outputLayer[x].value);
 	}
 }
+
+void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value) {
+	neuron.value = value;
+	UpdateNetwork(network);
+}

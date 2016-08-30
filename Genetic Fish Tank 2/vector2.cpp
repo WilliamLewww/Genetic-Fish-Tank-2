@@ -10,6 +10,30 @@ Vector2::Vector2(double xArgs, double yArgs) {
 	y = yArgs;
 }
 
+void Vector2::Normalize() {
+	// | a | = sqrt((ax * ax) + (ay * ay) + (az * az))
+	// x = ax / | a |
+	// y = ay / | a |
+	// z = az / | a |
+	int magnitude = abs(sqrt((x * x) + (y * y)));
+	std::cout << magnitude << std::endl;
+
+	if (magnitude != 0) {
+		x = x / magnitude;
+		y = y / magnitude;
+	}
+}
+
+Vector2 Vector2::operator*(Vector2 vector) {
+	Vector2 newVector(x *= vector.x, y *= vector.y);
+	return newVector;
+}
+
+Vector2 Vector2::operator*(double value) {
+	Vector2 newVector(x *= value, y *= value);
+	return newVector;
+}
+
 Vector2 Vector2::operator+(Vector2 vector) {
 	Vector2 newVector(x += vector.x, y += vector.y);
 	return newVector;
