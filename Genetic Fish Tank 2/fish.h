@@ -1,6 +1,7 @@
 #pragma once
 #include "neuralnetwork.h"
 #include "spritebatch.h"
+#include "visualizer.h"
 #include <iostream>
 class Fish {
 public:

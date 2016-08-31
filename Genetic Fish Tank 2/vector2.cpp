@@ -16,7 +16,6 @@ void Vector2::Normalize() {
 	// y = ay / | a |
 	// z = az / | a |
 	int magnitude = abs(sqrt((x * x) + (y * y)));
-	std::cout << magnitude << std::endl;
 
 	if (magnitude != 0) {
 		x = x / magnitude;

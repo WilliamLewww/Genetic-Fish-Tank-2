@@ -1,5 +1,16 @@
 #include "spritebatch.h"
 
+void DrawCircle(Vector2 position, float radius) {
+	glBegin(GL_LINE_LOOP);
+
+	double radians = M_PI / 180;
+	for (int i = 0; i < 360; i++) {
+		glVertex2d((cos(i * radians)*radius) - (SCREENWIDTH / 2) + position.x, (sin(i * radians)*radius) - (SCREENHEIGHT / 2) + position.y);
+	}
+
+	glEnd();
+}
+
 void DrawTriangle(Vector2 position, int width, int height) {
 	Vector2 vectors[3]{
 		Vector2(0, 0),

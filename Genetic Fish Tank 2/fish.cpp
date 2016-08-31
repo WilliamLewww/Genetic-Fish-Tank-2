@@ -36,4 +36,5 @@ void Fish::Update(int gameTime) {
 
 void Fish::Draw() {
 	DrawTriangle(position, width, height, rotation);
+	DrawNetwork(network, Vector2(400, 400));
 }
