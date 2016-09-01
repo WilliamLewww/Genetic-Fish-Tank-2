@@ -21,6 +21,7 @@ void Fish::LoadContent() {
 	SetupLayer(network.outputLayer, 3);
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
+	SetupNodeNetwork(network, nodeNetwork);
 }
 
 void Fish::Update(int gameTime) {
@@ -36,5 +37,5 @@ void Fish::Update(int gameTime) {
 
 void Fish::Draw() {
 	DrawTriangle(position, width, height, rotation);
-	DrawNetwork(network, Vector2(400, 400));
+	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
 }

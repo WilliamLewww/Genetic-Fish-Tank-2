@@ -10,6 +10,7 @@ public:
 	Vector2 operator*(Vector2 vector);
 	Vector2 operator*(double value);
 	Vector2 operator+(Vector2 vector);
+	Vector2 operator-(Vector2 vector);
 	Vector2 operator+=(Vector2 vector);
 	Vector2 operator-=(Vector2 vector);
 	bool operator==(Vector2 vector);

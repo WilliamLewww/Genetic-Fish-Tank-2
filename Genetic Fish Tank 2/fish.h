@@ -1,8 +1,8 @@
 #pragma once
-#include "neuralnetwork.h"
 #include "spritebatch.h"
+#include "neuralnetwork.h"
 #include "visualizer.h"
-#include <iostream>
+
 class Fish {
 public:
 	Vector2 position;
@@ -10,6 +10,7 @@ public:
 	double rotation;
 
 	NeuralNetwork network;
+	NodeNetwork nodeNetwork;
 
 	Fish();
 	Fish(Vector2 positionParam, int widthParam, int heightParam, double rotationParam);

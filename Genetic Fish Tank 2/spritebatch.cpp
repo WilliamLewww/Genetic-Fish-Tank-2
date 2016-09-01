@@ -1,5 +1,12 @@
 #include "spritebatch.h"
 
+void DrawLine(Vector2 a, Vector2 b) {
+	glBegin(GL_LINES);
+	glVertex2f(a.x - (SCREENWIDTH / 2), a.y - (SCREENHEIGHT / 2));
+	glVertex2f(b.x - (SCREENWIDTH / 2), b.y - (SCREENHEIGHT / 2));
+	glEnd();
+}
+
 void DrawCircle(Vector2 position, float radius) {
 	glBegin(GL_LINE_LOOP);
 
