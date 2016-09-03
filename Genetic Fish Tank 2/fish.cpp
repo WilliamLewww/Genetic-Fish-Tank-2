@@ -21,7 +21,7 @@ void Fish::LoadContent() {
 	SetupLayer(network.outputLayer, 3);
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
-	SetupNodeNetwork(network, nodeNetwork);
+	SetupNodeNetwork(&network, nodeNetwork);
 }
 
 void Fish::Update(int gameTime) {

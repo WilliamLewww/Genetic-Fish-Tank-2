@@ -1,33 +1,33 @@
 #include "visualizer.h"
 
-void SetupNodeNetwork(NeuralNetwork network, NodeNetwork& nodeNetwork) {
+void SetupNodeNetwork(NeuralNetwork* network, NodeNetwork& nodeNetwork) {
 	Node tempNode;
 
-	for (int x = 0; x < network.inputLayer.size(); x++) {
+	for (int x = 0; x < network->inputLayer.size(); x++) {
 		tempNode.layer = 0;
-		tempNode.neuron = &network.inputLayer[x];
+		tempNode.neuron = &network->inputLayer[x];
 		tempNode.position = Vector2(
-			-100, (x + 1) * (250 / (network.inputLayer.size() + 1))
+			-100, (x + 1) * (250 / (network->inputLayer.size() + 1))
 		);
 
 		nodeNetwork.nodes.push_back(tempNode);
 	}
 
-	for (int x = 0; x < network.hiddenLayer.size(); x++) {
+	for (int x = 0; x < network->hiddenLayer.size(); x++) {
 		tempNode.layer = 1;
-		tempNode.neuron = &network.hiddenLayer[x];
+		tempNode.neuron = &network->hiddenLayer[x];
 		tempNode.position = Vector2(
-			0, (x + 1) * (250 / (network.hiddenLayer.size() + 1))
+			0, (x + 1) * (250 / (network->hiddenLayer.size() + 1))
 		);
 
 		nodeNetwork.nodes.push_back(tempNode);
 	}
 
-	for (int x = 0; x < network.outputLayer.size(); x++) {
+	for (int x = 0; x < network->outputLayer.size(); x++) {
 		tempNode.layer = 2;
-		tempNode.neuron = &network.outputLayer[x];
+		tempNode.neuron = &network->outputLayer[x];
 		tempNode.position = Vector2(
-			100, (x + 1) * (250 / (network.outputLayer.size() + 1))
+			100, (x + 1) * (250 / (network->outputLayer.size() + 1))
 		);
 
 		nodeNetwork.nodes.push_back(tempNode);
@@ -47,6 +47,8 @@ void SetupNodeNetwork(NeuralNetwork network, NodeNetwork& nodeNetwork) {
 			}
 			incrementNode += 1;
 		}
+
+		incrementNode = 0;
 	}
 }
 
@@ -56,6 +58,6 @@ void DrawNodeNetwork(NodeNetwork network, Vector2 position) {
 	}
 
 	for (int x = 0; x < network.connections.size(); x++) {
-		DrawLine(network.connections[x].pointA, network.connections[x].pointB);
+		DrawLine(network.connections[x].pointA + position - Vector2(0, 125), network.connections[x].pointB + position - Vector2(0, 125));
 	}
 }

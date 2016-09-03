@@ -23,5 +23,5 @@ struct NodeNetwork {
 	std::vector<Connection> connections;
 };
 
-void SetupNodeNetwork(NeuralNetwork network, NodeNetwork& nodeList);
+void SetupNodeNetwork(NeuralNetwork* network, NodeNetwork& nodeList);
 void DrawNodeNetwork(NodeNetwork network, Vector2 position);
