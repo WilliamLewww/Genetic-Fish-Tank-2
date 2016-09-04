@@ -33,16 +33,12 @@ void SetupNodeNetwork(NeuralNetwork* network, NodeNetwork& nodeNetwork) {
 		nodeNetwork.nodes.push_back(tempNode);
 	}
 
-	Connection connection;
-
 	int incrementNode = 0;
 	for (int x = 0; x < nodeNetwork.nodes.size(); x++) {
-		connection.pointA = nodeNetwork.nodes[x].position;
 		while (incrementNode < nodeNetwork.nodes[x].neuron->synapseList.size()) {
 			for (int y = 0; y < nodeNetwork.nodes.size(); y++) {
 				if (nodeNetwork.nodes[x].neuron->synapseList[incrementNode].connectedNeuron == nodeNetwork.nodes[y].neuron) {
-					connection.pointB = nodeNetwork.nodes[y].position;
-					nodeNetwork.connections.push_back(connection);
+					nodeNetwork.connections.push_back(Connection(&nodeNetwork.nodes[x], &nodeNetwork.nodes[y]));
 				}
 			}
 			incrementNode += 1;
@@ -58,6 +54,6 @@ void DrawNodeNetwork(NodeNetwork network, Vector2 position) {
 	}
 
 	for (int x = 0; x < network.connections.size(); x++) {
-		DrawLine(network.connections[x].pointA + position - Vector2(0, 125), network.connections[x].pointB + position - Vector2(0, 125));
+		DrawLine(network.connections[x].pointA + position - Vector2(-network.connections[x].nodeA->radius, 125), network.connections[x].pointB + position - Vector2(network.connections[x].nodeB->radius, 125));
 	}
 }

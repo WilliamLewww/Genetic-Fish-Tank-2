@@ -12,8 +12,19 @@ struct Node {
 };
 
 struct Connection {
+	Node* nodeA;
+	Node* nodeB;
+
 	Vector2 pointA;
 	Vector2 pointB;
+
+	Connection(Node* nodeAParam, Node* nodeBParam) {
+		nodeA = nodeAParam;
+		nodeB = nodeBParam;
+
+		pointA = nodeA->position;
+		pointB = nodeB->position;
+	}
 
 	double weight;
 };
