@@ -2,6 +2,15 @@
 
 void DrawLine(Vector2 a, Vector2 b) {
 	glBegin(GL_LINES);
+	glColor4f(1, 1, 1, 1);
+	glVertex2f(a.x - (SCREENWIDTH / 2), a.y - (SCREENHEIGHT / 2));
+	glVertex2f(b.x - (SCREENWIDTH / 2), b.y - (SCREENHEIGHT / 2));
+	glEnd();
+}
+
+void DrawLine(Vector2 a, Vector2 b, double color[3]) {
+	glBegin(GL_LINES);
+	glColor4f(color[0], color[1], color[2], 1);
 	glVertex2f(a.x - (SCREENWIDTH / 2), a.y - (SCREENHEIGHT / 2));
 	glVertex2f(b.x - (SCREENWIDTH / 2), b.y - (SCREENHEIGHT / 2));
 	glEnd();
@@ -9,6 +18,19 @@ void DrawLine(Vector2 a, Vector2 b) {
 
 void DrawCircle(Vector2 position, float radius) {
 	glBegin(GL_LINE_LOOP);
+	glColor4f(1, 1, 1, 1);
+
+	double radians = M_PI / 180;
+	for (int i = 0; i < 360; i++) {
+		glVertex2d((cos(i * radians)*radius) - (SCREENWIDTH / 2) + position.x, (sin(i * radians)*radius) - (SCREENHEIGHT / 2) + position.y);
+	}
+
+	glEnd();
+}
+
+void DrawCircle(Vector2 position, float radius, double color[3]) {
+	glBegin(GL_LINE_LOOP);
+	glColor4f(color[0], color[1], color[2], 1);
 
 	double radians = M_PI / 180;
 	for (int i = 0; i < 360; i++) {
@@ -26,7 +48,7 @@ void DrawTriangle(Vector2 position, int width, int height) {
 	};
 
 	glBegin(GL_TRIANGLES);
-	glColor4f(0, 0, 0, 1);
+	glColor4f(1, 1, 1, 1);
 	for (int x = 0; x < 3; x++) {
 		vectors[x].x *= width;
 		vectors[x].y *= height;
@@ -51,7 +73,7 @@ void DrawTriangle(Vector2 position, int width, int height, double angle) {
 	glRotatef(angle, 0, 0, 1);
 	glTranslatef(-(position.x + (width / 2) - (SCREENWIDTH / 2)), -(position.y + (height / 2) - (SCREENHEIGHT / 2)), 0);
 	glBegin(GL_TRIANGLES);
-	glColor4f(0, 0, 0, 1);
+	glColor4f(1, 1, 1, 1);
 	for (int x = 0; x < 3; x++) {
 		vectors[x].x *= width;
 		vectors[x].y *= height;

@@ -6,9 +6,8 @@
 struct Node {
 	Neuron* neuron;
 	Vector2 position;
-	
-	int value;
-	int radius = 20, layer = -1;
+
+	int radius = 20;
 };
 
 struct Connection {

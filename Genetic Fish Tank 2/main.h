@@ -6,7 +6,4 @@
 #include "fish.h"
 
 static SDL_Window* displayWindow;
-
 extern bool isRunning;
-
-float ConvertColor(int rgbValue);

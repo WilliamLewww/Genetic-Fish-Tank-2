@@ -1,5 +1,6 @@
 #include "main.h"
 
+void Quit();
 void LoadContent();
 void Update(int gameTime);
 void Render(SDL_Window* window, SDL_GLContext context);
@@ -42,7 +43,13 @@ int main(int argc, char *argv[]) {
 		deltaTime = frameEnd - frameStart;
 	}
 
+	Quit();
+
 	return 0;
+}
+
+void Quit() {
+	SDL_Quit();
 }
 
 void LoadContent() {
@@ -55,7 +62,7 @@ void Update(int gameTime) {
 
 void Render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
-	glClearColor(ConvertColor(69), ConvertColor(177), ConvertColor(237), 1);
+	glClearColor(ConvertColor(0), ConvertColor(0), ConvertColor(0), 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 
