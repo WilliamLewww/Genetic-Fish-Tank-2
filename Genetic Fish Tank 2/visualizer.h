@@ -17,12 +17,14 @@ struct Connection {
 	Vector2 pointA;
 	Vector2 pointB;
 
-	Connection(Node* nodeAParam, Node* nodeBParam) {
+	Connection(Node* nodeAParam, Node* nodeBParam, double weightParam) {
 		nodeA = nodeAParam;
 		nodeB = nodeBParam;
 
 		pointA = nodeA->position;
 		pointB = nodeB->position;
+
+		weight = weightParam;
 	}
 
 	double weight;

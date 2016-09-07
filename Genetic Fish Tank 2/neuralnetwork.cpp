@@ -22,7 +22,7 @@ void SetupConnectionsRandom(NeuralNetwork& network) {
 }
 
 double Sigmoid(double x) {
-	return (1 / (1 + std::pow(e, x)));
+	return 1 / (1 + std::pow(e, -x));
 }
 
 void UpdateNetwork(NeuralNetwork& network) {
@@ -33,7 +33,8 @@ void UpdateNetwork(NeuralNetwork& network) {
 	}
 
 	for (int x = 0; x < network.hiddenLayer.size(); x++) {
-		network.hiddenLayer[x].value = Sigmoid(network.hiddenLayer[x].value);
+		if (network.hiddenLayer[x].value > 0.5) network.hiddenLayer[x].value = Sigmoid(network.hiddenLayer[x].value);
+		else network.hiddenLayer[x].value = 0.0;
 	}
 
 	for (int x = 0; x < network.hiddenLayer.size(); x++) {
@@ -43,7 +44,8 @@ void UpdateNetwork(NeuralNetwork& network) {
 	}
 
 	for (int x = 0; x < network.outputLayer.size(); x++) {
-		network.outputLayer[x].value = Sigmoid(network.outputLayer[x].value);
+		if (network.outputLayer[x].value > 0.5) network.outputLayer[x].value = Sigmoid(network.outputLayer[x].value);
+		else network.outputLayer[x].value = 0.0;
 	}
 }
 

@@ -35,7 +35,7 @@ void SetupNodeNetwork(NeuralNetwork* network, NodeNetwork& nodeNetwork) {
 		while (incrementNode < nodeNetwork.nodes[x].neuron->synapseList.size()) {
 			for (int y = 0; y < nodeNetwork.nodes.size(); y++) {
 				if (nodeNetwork.nodes[x].neuron->synapseList[incrementNode].connectedNeuron == nodeNetwork.nodes[y].neuron) {
-					nodeNetwork.connections.push_back(Connection(&nodeNetwork.nodes[x], &nodeNetwork.nodes[y]));
+					nodeNetwork.connections.push_back(Connection(&nodeNetwork.nodes[x], &nodeNetwork.nodes[y], nodeNetwork.nodes[x].neuron->synapseList[incrementNode].weight));
 				}
 			}
 			incrementNode += 1;
@@ -63,7 +63,12 @@ void DrawNodeNetwork(NodeNetwork network, Vector2 position) {
 		DrawCircle(network.nodes[x].position + position - Vector2(0, 125), network.nodes[x].radius, color);
 	}
 
+	//Color based on Weight
 	for (int x = 0; x < network.connections.size(); x++) {
-		DrawLine(network.connections[x].pointA + position - Vector2(-network.connections[x].nodeA->radius, 125), network.connections[x].pointB + position - Vector2(network.connections[x].nodeB->radius, 125));
+		double color[3];
+		color[0] = *GetVisualColor(network.connections[x].weight);
+		color[1] = *(GetVisualColor(network.connections[x].weight) + 1);
+		color[2] = *(GetVisualColor(network.connections[x].weight) + 2);
+		DrawLine(network.connections[x].pointA + position - Vector2(-network.connections[x].nodeA->radius, 125), network.connections[x].pointB + position - Vector2(network.connections[x].nodeB->radius, 125), color);
 	}
 }

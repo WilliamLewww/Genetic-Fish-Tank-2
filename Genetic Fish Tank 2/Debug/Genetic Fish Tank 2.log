@@ -1,4 +1,17 @@
-﻿  fish.cpp
+﻿  neuralnetwork.cpp
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(11): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(12): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(17): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(18): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(29): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(30): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(35): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(40): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(41): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(46): warning C4018: '<': signed/unsigned mismatch
+  fish.cpp
 g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(4): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.exe
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.pdb (Partial PDB)
