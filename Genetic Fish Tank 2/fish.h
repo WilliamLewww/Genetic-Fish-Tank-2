@@ -2,6 +2,7 @@
 #include "spritebatch.h"
 #include "neuralnetwork.h"
 #include "visualizer.h"
+#include "food.h"
 
 class Fish {
 public:
@@ -17,5 +18,8 @@ public:
 	void LoadContent();
 	void Update(int gameTime);
 	void Draw();
+
+	double GetFoodLeft(std::vector<Food> foodList);
+	double GetFoodRight(std::vector<Food> foodList);
 };
 

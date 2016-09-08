@@ -118,6 +118,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="fish.cpp" />
+    <ClCompile Include="food.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="neuralnetwork.cpp" />
@@ -127,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fish.h" />
+    <ClInclude Include="food.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />

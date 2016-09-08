@@ -31,12 +31,25 @@ void Fish::Update(int gameTime) {
 	if (position.y > SCREENHEIGHT) position.y = 0 - height;
 	if (position.y + height < 0) position.y = SCREENHEIGHT;
 
-	Vector2 direction = Vector2((float)cos((rotation * M_PI) / 180), sin((rotation * M_PI) / 180));
-	direction.Normalize();
-	position += direction;
+	if (network.outputLayer[0].value >= 0.5) {
+		Vector2 direction = Vector2((float)cos((rotation * M_PI) / 180), sin((rotation * M_PI) / 180));
+		direction.Normalize();
+		position += direction;
+	}
+
+	if (network.outputLayer[1].value >= 0.5) rotation -= 0.8;
+	if (network.outputLayer[2].value >= 0.5) rotation += 0.8;
 }
 
 void Fish::Draw() {
 	DrawTriangle(position, width, height, rotation);
 	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
+}
+
+double Fish::GetFoodLeft(std::vector<Food> foodList) {
+
+}
+
+double Fish::GetFoodRight(std::vector<Food> foodList) {
+
 }
