@@ -15,7 +15,7 @@ void Vector2::Normalize() {
 	// x = ax / | a |
 	// y = ay / | a |
 	// z = az / | a |
-	int magnitude = abs(sqrt((x * x) + (y * y)));
+	double magnitude = (double)abs(sqrt((x * x) + (y * y)));
 
 	if (magnitude != 0) {
 		x = x / magnitude;

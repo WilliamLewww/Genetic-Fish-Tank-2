@@ -70,7 +70,7 @@ void DrawTriangle(Vector2 position, int width, int height, double angle) {
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glTranslatef(position.x + (width / 2) - (SCREENWIDTH / 2), position.y + (height / 2) - (SCREENHEIGHT / 2), 0);
-	glRotatef(angle, 0, 0, 1);
+	glRotatef(-angle, 0, 0, 1);
 	glTranslatef(-(position.x + (width / 2) - (SCREENWIDTH / 2)), -(position.y + (height / 2) - (SCREENHEIGHT / 2)), 0);
 	glBegin(GL_TRIANGLES);
 	glColor4f(1, 1, 1, 1);
