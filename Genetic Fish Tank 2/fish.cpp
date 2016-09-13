@@ -44,8 +44,12 @@ void Fish::Update(int gameTime) {
 		position += (direction * deltaTimeS) * 75;
 	}
 
-	if (network.outputLayer[1].value >= 0.5) rotation -= 75 * deltaTimeS;
-	if (network.outputLayer[2].value >= 0.5) rotation += 75 * deltaTimeS;
+	if (network.outputLayer[1].value >= 0.5) rotation += 75 * deltaTimeS;
+	if (network.outputLayer[2].value >= 0.5) rotation -= 75 * deltaTimeS;
+
+	///Theoretical Movement
+	//if (network.inputLayer[0].value == 1) rotation += 75 * deltaTimeS;
+	//if (network.inputLayer[1].value == 1) rotation -= 75 * deltaTimeS;
 
 	switch (GetLine(rotation)) {
 		case -1:

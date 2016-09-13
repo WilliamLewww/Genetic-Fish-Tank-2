@@ -1,5 +1,47 @@
 #include "spritebatch.h"
 
+void DrawRect(Vector2 position, int width, int height) {
+	Vector2 vectors[4]{
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	};
+
+	glBegin(GL_QUADS);
+	glColor4f(1, 1, 1, 1);
+	for (int x = 0; x < 4; x++) {
+		vectors[x].x *= width;
+		vectors[x].y *= height;
+		vectors[x] += Vector2(position.x, position.y);
+		vectors[x] -= Vector2(SCREENWIDTH / 2, SCREENHEIGHT / 2);
+
+		glVertex2d(vectors[x].x, vectors[x].y);
+	}
+	glEnd();
+}
+
+void DrawRect(Vector2 position, int width, int height, double color[3]) {
+	Vector2 vectors[4]{
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	};
+
+	glBegin(GL_QUADS);
+	glColor4f(color[0], color[1], color[2], 1);
+	for (int x = 0; x < 4; x++) {
+		vectors[x].x *= width;
+		vectors[x].y *= height;
+		vectors[x] += Vector2(position.x, position.y);
+		vectors[x] -= Vector2(SCREENWIDTH / 2, SCREENHEIGHT / 2);
+
+		glVertex2d(vectors[x].x, vectors[x].y);
+	}
+	glEnd();
+}
+
 void DrawLine(Vector2 a, Vector2 b) {
 	glBegin(GL_LINES);
 	glColor4f(1, 1, 1, 1);
