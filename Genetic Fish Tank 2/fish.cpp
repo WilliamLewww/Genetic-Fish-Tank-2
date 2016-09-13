@@ -1,5 +1,8 @@
 ﻿#include "fish.h"
 
+int GetLine(double rotation);
+double GetSlope(double rotation);
+
 Fish::Fish() {
 	srand(time(NULL));
 	position = Vector2(rand() % SCREENWIDTH, rand() % SCREENHEIGHT);
@@ -28,6 +31,8 @@ void Fish::LoadContent() {
 void Fish::Update(int gameTime) {
 	float deltaTimeS = (float)(gameTime) / 1000;
 
+	if (rotation >= 360) rotation -= 360;
+
 	if (position.x > SCREENWIDTH) position.x = 0 - width;
 	if (position.x + width < 0) position.x = SCREENWIDTH;
 	if (position.y > SCREENHEIGHT) position.y = 0 - height;
@@ -41,6 +46,15 @@ void Fish::Update(int gameTime) {
 
 	if (network.outputLayer[1].value >= 0.5) rotation -= 75 * deltaTimeS;
 	if (network.outputLayer[2].value >= 0.5) rotation += 75 * deltaTimeS;
+
+	switch (GetLine(rotation)) {
+		case -1:
+			break;
+		case 1:
+			break;
+		case 0:
+			break;
+	}
 }
 
 void Fish::Draw() {
@@ -55,3 +69,15 @@ void Fish::Draw() {
 //double Fish::GetFoodRight(std::vector<Food> foodList) {
 //
 //}
+
+int GetLine(double rotation) {
+	if (rotation == 0 || (int)rotation % 180 == 0) return 1;
+	if ((int)rotation % 90 == 0) return -1;
+
+	return 0;
+}
+
+double GetSlope(double rotation) {
+	if (rotation == 0 || (int)rotation % 90 == 0) return 0;
+	return tan((rotation + 180) * M_PI / 180);
+}

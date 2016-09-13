@@ -1,4 +1,4 @@
 ﻿  fish.cpp
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(4): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.exe
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.pdb (Partial PDB)
