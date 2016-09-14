@@ -50,7 +50,14 @@ void Fish::Update(int gameTime) {
 	///Theoretical Movement
 	//if (network.inputLayer[0].value == 1) rotation += 75 * deltaTimeS;
 	//if (network.inputLayer[1].value == 1) rotation -= 75 * deltaTimeS;
+}
 
+void Fish::Draw() {
+	DrawTriangle(position, width, height, rotation);
+	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
+}
+
+double Fish::GetFoodLeft(std::vector<Food> foodList) {
 	switch (GetLine(rotation)) {
 		case -1:
 			break;
@@ -61,18 +68,16 @@ void Fish::Update(int gameTime) {
 	}
 }
 
-void Fish::Draw() {
-	DrawTriangle(position, width, height, rotation);
-	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
+double Fish::GetFoodRight(std::vector<Food> foodList) {
+	switch (GetLine(rotation)) {
+		case -1:
+			break;
+		case 1:
+			break;
+		case 0:
+			break;
+	}
 }
-
-//double Fish::GetFoodLeft(std::vector<Food> foodList) {
-//
-//}
-//
-//double Fish::GetFoodRight(std::vector<Food> foodList) {
-//
-//}
 
 int GetLine(double rotation) {
 	if (rotation == 0 || (int)rotation % 180 == 0) return 1;
