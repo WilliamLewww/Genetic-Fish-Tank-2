@@ -38,14 +38,16 @@ void Fish::Update(int gameTime) {
 	if (position.y > SCREENHEIGHT) position.y = 0 - height;
 	if (position.y + height < 0) position.y = SCREENHEIGHT;
 	
-	if (network.outputLayer[0].value >= 0.5) {
+	if (network.outputLayer[0].Sigmoid() >= 0.5) {
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
 		position += (direction * deltaTimeS) * 75;
 	}
 
-	if (network.outputLayer[1].value >= 0.5) rotation += 75 * deltaTimeS;
-	if (network.outputLayer[2].value >= 0.5) rotation -= 75 * deltaTimeS;
+	if (network.outputLayer[1].Sigmoid() >= 0.5 && network.outputLayer[2].Sigmoid() < network.outputLayer[1].Sigmoid()) rotation += 75 * deltaTimeS;
+	if (network.outputLayer[2].Sigmoid() >= 0.5 && network.outputLayer[1].Sigmoid() < network.outputLayer[2].Sigmoid()) rotation -= 75 * deltaTimeS;
+
+	GetClosestFood(foodList, closestLeft, closestRight);
 
 	///Theoretical Movement
 	//if (network.inputLayer[0].value == 1) rotation += 75 * deltaTimeS;
@@ -57,26 +59,51 @@ void Fish::Draw() {
 	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
 }
 
-double Fish::GetFoodLeft(std::vector<Food> foodList) {
-	switch (GetLine(rotation)) {
-		case -1:
-			break;
-		case 1:
-			break;
-		case 0:
-			break;
+void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &right) {
+	if (foodList.size() > 0) {
+		double minDistanceLeft = -1, minDistanceRight = -1;
+		switch (GetLine(rotation)) {
+			case -1:
+				for (int x = 0; x < foodList.size(); x++) {
+					if (foodList[x].position.x < position.x) {
+						if (minDistanceLeft < 0 || GetRelativePosition(foodList[0]) < minDistanceLeft) {
+							left = minDistanceLeft;
+						}
+					}
+
+					if (foodList[x].position.x > position.x) {
+						if (minDistanceRight < 0 || GetRelativePosition(foodList[0]) < minDistanceRight) {
+							right = minDistanceRight;
+						}
+					}
+				}
+				break;
+			case 1:
+				for (int x = 0; x < foodList.size(); x++) {
+					if (foodList[x].position.y < position.y) {
+						if (minDistanceLeft < 0 || GetRelativePosition(foodList[0]) < minDistanceLeft) {
+							left = minDistanceLeft;
+						}
+					}
+
+					if (foodList[x].position.y > position.y) {
+						if (minDistanceRight < 0 || GetRelativePosition(foodList[0]) < minDistanceRight) {
+							right = minDistanceRight;
+						}
+					}
+				}
+				break;
+			case 0:
+				break;
+		}
 	}
 }
 
-double Fish::GetFoodRight(std::vector<Food> foodList) {
-	switch (GetLine(rotation)) {
-		case -1:
-			break;
-		case 1:
-			break;
-		case 0:
-			break;
-	}
+double Fish::GetRelativePosition(Food food) {
+	Vector2 newPosition(position.x, position.y);
+	Vector2 relativeSlope = (newPosition - food.position).Abs();
+
+	return sqrt(pow(relativeSlope.x, 2) + pow(relativeSlope.y, 2));
 }
 
 int GetLine(double rotation) {

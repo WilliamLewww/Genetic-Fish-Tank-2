@@ -10,7 +10,14 @@ Vector2::Vector2(double xArgs, double yArgs) {
 	y = yArgs;
 }
 
-void Vector2::Normalize() {
+Vector2 Vector2::Abs() {
+	x = abs(x);
+	y = abs(y);
+
+	return *this;
+}
+
+Vector2 Vector2::Normalize() {
 	// | a | = sqrt((ax * ax) + (ay * ay) + (az * az))
 	// x = ax / | a |
 	// y = ay / | a |
@@ -21,6 +28,8 @@ void Vector2::Normalize() {
 		x = x / magnitude;
 		y = y / magnitude;
 	}
+
+	return *this;
 }
 
 Vector2 Vector2::operator*(Vector2 vector) {
@@ -34,13 +43,11 @@ Vector2 Vector2::operator*(double value) {
 }
 
 Vector2 Vector2::operator+(Vector2 vector) {
-	Vector2 newVector(x += vector.x, y += vector.y);
-	return newVector;
+	return Vector2(x += vector.x, y += vector.y);
 }
 
 Vector2 Vector2::operator-(Vector2 vector) {
-	Vector2 newVector(x -= vector.x, y -= vector.y);
-	return newVector;
+	return Vector2(x -= vector.x, y -= vector.y);
 }
 
 Vector2 Vector2::operator+=(Vector2 vector) {

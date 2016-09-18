@@ -10,6 +10,9 @@ public:
 	int width, height; 
 	double rotation;
 
+	double range = 500;
+	double closestLeft = -1, closestRight = -1;
+
 	NeuralNetwork network;
 	NodeNetwork nodeNetwork;
 
@@ -19,7 +22,7 @@ public:
 	void Update(int gameTime);
 	void Draw();
 
-	double GetFoodLeft(std::vector<Food> foodList);
-	double GetFoodRight(std::vector<Food> foodList);
+	void GetClosestFood(std::vector<Food> foodList, double &left, double &right);
+	double GetRelativePosition(Food food);
 };
 

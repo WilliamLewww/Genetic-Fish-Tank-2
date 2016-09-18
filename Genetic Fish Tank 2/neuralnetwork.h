@@ -9,6 +9,10 @@ struct Synapse;
 struct Neuron {
 	double value = 0;
 	std::vector<Synapse> synapseList;
+
+	inline double Sigmoid() {
+		return 1 / (1 + std::pow(e, -value));
+	}
 };
 
 struct Synapse {

@@ -6,7 +6,6 @@ void Update(int gameTime);
 void Render(SDL_Window* window, SDL_GLContext context);
 
 Fish testFish;
-Food testFood(Vector2(0, 0));
 
 SDL_Event event;
 SDL_GLContext context;
@@ -54,6 +53,7 @@ void Quit() {
 }
 
 void LoadContent() {
+	GenerateFood(1);
 	testFish.LoadContent();
 }
 
@@ -68,7 +68,7 @@ void Render(SDL_Window* window, SDL_GLContext context) {
 	glMatrixMode(GL_PROJECTION);
 
 	testFish.Draw();
-	testFood.Draw();
+	DrawFood();
 
 	SDL_GL_SwapWindow(window);
 }

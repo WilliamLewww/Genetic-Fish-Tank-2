@@ -13,3 +13,4 @@ public:
 extern std::vector<Food> foodList;
 
 void GenerateFood(int count);
+void DrawFood();
