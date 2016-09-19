@@ -28,11 +28,12 @@ struct Synapse {
 
 struct NeuralNetwork {
 	std::vector<Neuron> inputLayer;
-	std::vector<Neuron> hiddenLayer;
+	std::vector<std::vector<Neuron>> hiddenLayer;
 	std::vector<Neuron> outputLayer;
 };
 
 void SetupLayer(std::vector<Neuron>& layer, int count);
+void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount);
 void SetupConnectionsRandom(NeuralNetwork& network);
 void UpdateNetwork(NeuralNetwork& network);
 void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value);

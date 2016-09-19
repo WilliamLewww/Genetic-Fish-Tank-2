@@ -20,12 +20,12 @@ Fish::Fish(Vector2 positionParam, int widthParam, int heightParam, double rotati
 
 void Fish::LoadContent() {
 	SetupLayer(network.inputLayer, 2);
-	SetupLayer(network.hiddenLayer, 4);
+	SetupHiddenLayer(network.hiddenLayer, 1, 4);
 	SetupLayer(network.outputLayer, 3);
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);
-	SetNeuron(network, network.inputLayer[0], 1);
+	//SetNeuron(network, network.inputLayer[0], 1);
 }
 
 void Fish::Update(int gameTime) {

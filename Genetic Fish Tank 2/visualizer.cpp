@@ -13,12 +13,14 @@ void SetupNodeNetwork(NeuralNetwork* network, NodeNetwork& nodeNetwork) {
 	}
 
 	for (int x = 0; x < network->hiddenLayer.size(); x++) {
-		tempNode.neuron = &network->hiddenLayer[x];
-		tempNode.position = Vector2(
-			0, (x + 1) * (250 / (network->hiddenLayer.size() + 1))
-		);
+		for (int y = 0; y < network->hiddenLayer[x].size(); y++) {
+			tempNode.neuron = &network->hiddenLayer[x][y];
+			tempNode.position = Vector2(
+				0, (y + 1) * (250 / (network->hiddenLayer[x].size() + 1))
+			);
 
-		nodeNetwork.nodes.push_back(tempNode);
+			nodeNetwork.nodes.push_back(tempNode);
+		}
 	}
 
 	for (int x = 0; x < network->outputLayer.size(); x++) {
