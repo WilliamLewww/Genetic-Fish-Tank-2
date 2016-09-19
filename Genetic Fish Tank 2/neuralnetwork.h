@@ -8,10 +8,11 @@ struct Synapse;
 
 struct Neuron {
 	double value = 0;
+	double sigValue = 0;
 	std::vector<Synapse> synapseList;
 
-	inline double Sigmoid() {
-		return 1 / (1 + std::pow(e, -value));
+	inline void Sigmoid() {
+		sigValue = (double)(1 / (1 + std::pow(e, -value)));
 	}
 };
 

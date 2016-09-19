@@ -1,21 +1,2 @@
-﻿  neuralnetwork.cpp
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(20): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(21): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(22): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(27): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(28): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(29): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(35): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(36): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(43): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(44): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(49): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(50): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(51): warning C4018: '<': signed/unsigned mismatch
-  fish.cpp
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(67): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(82): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.exe
+﻿  Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.exe
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.pdb (Partial PDB)

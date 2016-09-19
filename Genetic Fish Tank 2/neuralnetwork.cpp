@@ -49,7 +49,7 @@ void UpdateNetwork(NeuralNetwork& network) {
 	for (int z = 0; z < network.hiddenLayer.size(); z++) {
 		for (int x = 0; x < network.hiddenLayer[z].size(); x++) {
 			for (int y = 0; y < network.hiddenLayer[z][x].synapseList.size(); y++) {
-				//ERROR HERE
+				//ERROR HERE WITH SIGMOID IN GENERAL
 				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value += double(network.hiddenLayer[z][x].synapseList[y].weight * network.hiddenLayer[z][x].Sigmoid());
 			}
 		}
