@@ -39,6 +39,7 @@ void SetupConnectionsRandom(NeuralNetwork& network) {
 	}
 }
 
+#include <iostream>
 void UpdateNetwork(NeuralNetwork& network) {
 	for (int x = 0; x < network.inputLayer.size(); x++) {
 		for (int y = 0; y < network.inputLayer[x].synapseList.size(); y++) {
@@ -50,7 +51,9 @@ void UpdateNetwork(NeuralNetwork& network) {
 		for (int x = 0; x < network.hiddenLayer[z].size(); x++) {
 			for (int y = 0; y < network.hiddenLayer[z][x].synapseList.size(); y++) {
 				//ERROR HERE WITH SIGMOID IN GENERAL
-				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value += double(network.hiddenLayer[z][x].synapseList[y].weight * network.hiddenLayer[z][x].Sigmoid());
+				//CHECK THRESHOLD
+				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value += double(network.hiddenLayer[z][x].synapseList[y].weight * network.hiddenLayer[z][x].sigValue);
+				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->sigValue = network.hiddenLayer[z][x].synapseList[y].connectedNeuron->Sigmoid();
 			}
 		}
 	}

@@ -26,6 +26,7 @@ void Fish::LoadContent() {
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);
 	SetNeuron(network, network.inputLayer[0], 1);
+	SetNeuron(network, network.inputLayer[1], 1);
 }
 
 void Fish::Update(int gameTime) {

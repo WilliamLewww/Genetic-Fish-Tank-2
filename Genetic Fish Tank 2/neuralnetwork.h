@@ -11,8 +11,8 @@ struct Neuron {
 	double sigValue = 0;
 	std::vector<Synapse> synapseList;
 
-	inline void Sigmoid() {
-		sigValue = (double)(1 / (1 + std::pow(e, -value)));
+	inline double Sigmoid() {
+		return 1 / (1 + std::pow(e, -value));
 	}
 };
 
