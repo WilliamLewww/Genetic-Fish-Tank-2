@@ -25,6 +25,8 @@ void Fish::LoadContent() {
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);
+	SetNeuron(network, network.inputLayer[0], 1);
+	SetNeuron(network, network.inputLayer[1], 1);
 }
 
 void Fish::Update(int gameTime) {
@@ -37,14 +39,14 @@ void Fish::Update(int gameTime) {
 	if (position.y > SCREENHEIGHT) position.y = 0 - height;
 	if (position.y + height < 0) position.y = SCREENHEIGHT;
 	
-	if (network.outputLayer[0].Sigmoid() >= 0.5) {
+	if (network.outputLayer[0].value >= 0.5) {
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
 		position += (direction * deltaTimeS) * 75;
 	}
 
-	if (network.outputLayer[1].Sigmoid() >= 0.5 && network.outputLayer[2].Sigmoid() < network.outputLayer[1].Sigmoid()) rotation += 75 * deltaTimeS;
-	if (network.outputLayer[2].Sigmoid() >= 0.5 && network.outputLayer[1].Sigmoid() < network.outputLayer[2].Sigmoid()) rotation -= 75 * deltaTimeS;
+	if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) rotation += 75 * deltaTimeS;
+	if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
 
 	GetClosestFood(foodList, closestLeft, closestRight);
 
