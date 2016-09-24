@@ -8,7 +8,6 @@ struct Synapse;
 
 struct Neuron {
 	double value = 0;
-	double sigValue = 0;
 	std::vector<Synapse> synapseList;
 
 	inline double Sigmoid() {
