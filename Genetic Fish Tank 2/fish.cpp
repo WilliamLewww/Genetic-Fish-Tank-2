@@ -42,13 +42,15 @@ void Fish::Update(int gameTime) {
 	if (network.outputLayer[0].value >= 0.5) {
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
-		position += (direction * deltaTimeS) * 75;
+		//position += (direction * deltaTimeS) * 75;
 	}
 
-	if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) rotation += 75 * deltaTimeS;
-	if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
+	//if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) 
+	rotation += 10 * deltaTimeS;
+	//if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
 
 	GetClosestFood(foodList, closestLeft, closestRight);
+	//std::cout << (GetSlope(rotation) * foodList[0].position.x) + (SCREENHEIGHT - position.y) << ":" << SCREENHEIGHT - foodList[0].position.y << std::endl;
 
 	///Theoretical Movement
 	//if (network.inputLayer[0].value == 1) rotation += 75 * deltaTimeS;
@@ -58,6 +60,7 @@ void Fish::Update(int gameTime) {
 void Fish::Draw() {
 	DrawTriangle(position, width, height, rotation);
 	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
+	DrawLine(Vector2(position.x + width / 2, position.y + height / 2), Vector2(foodList[0].position.x, -(GetSlope(rotation) * foodList[0].position.x) - (SCREENHEIGHT - position.y)));
 }
 
 void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &right) {
@@ -95,6 +98,14 @@ void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &righ
 				}
 				break;
 			case 0:
+				for (int x = 0; x < foodList.size(); x++) {
+					if (-GetSlope(rotation) * foodList[x].position.x - (SCREENHEIGHT - position.y) > SCREENHEIGHT - foodList[x].position.y) {
+						std::cout << -GetSlope(rotation) * foodList[x].position.x - (SCREENHEIGHT - position.y) << std::endl;
+						if (minDistanceLeft < 0 || GetRelativePosition(foodList[0]) < minDistanceLeft) {
+							left = minDistanceLeft;
+						}
+					}
+				}
 				break;
 		}
 	}
