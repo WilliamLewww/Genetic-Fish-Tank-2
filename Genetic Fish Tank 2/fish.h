@@ -3,6 +3,7 @@
 #include "neuralnetwork.h"
 #include "visualizer.h"
 #include "food.h"
+#include "input.h"
 
 class Fish {
 public:
