@@ -1,7 +1,7 @@
 ﻿  fish.cpp
 g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(72): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(87): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(102): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(84): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(99): warning C4018: '<': signed/unsigned mismatch
+g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(114): warning C4018: '<': signed/unsigned mismatch
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.exe
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.pdb (Partial PDB)

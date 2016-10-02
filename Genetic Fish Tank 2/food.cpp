@@ -19,7 +19,9 @@ void Food::Draw() {
 }
 
 void GenerateFood(int count) {
-	foodList.push_back(Food(Vector2(rand() % (SCREENWIDTH - 10), rand() % (SCREENHEIGHT - 10))));
+	for (int x = 0; x < count; x++) {
+		foodList.push_back(Food(Vector2(rand() % (SCREENWIDTH - 10), rand() % (SCREENHEIGHT - 10))));
+	}
 }
 
 void DrawFood() {
