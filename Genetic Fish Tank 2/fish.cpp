@@ -46,9 +46,9 @@ void Fish::Update(int gameTime) {
 	}
 
 	GetClosestFood(foodList, closestLeft, closestRight);
-	if (closestLeft <= range) { SetNeuron(network, network.inputLayer[0], ((range - closestLeft) / range)); }
+	if (closestLeft <= range && closestLeft != -1) { SetNeuron(network, network.inputLayer[0], ((range - closestLeft) / range)); }
 	else { SetNeuron(network, network.inputLayer[0], 0); }
-	if (closestRight <= range) { SetNeuron(network, network.inputLayer[1], ((range - closestRight) / range)); }
+	if (closestRight <= range && closestRight != -1) { SetNeuron(network, network.inputLayer[1], ((range - closestRight) / range)); }
 	else { SetNeuron(network, network.inputLayer[1], 0); }
 
 	//if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) rotation += 75 * deltaTimeS;
@@ -66,8 +66,6 @@ void Fish::Update(int gameTime) {
 		direction.Normalize();
 		position += (direction * deltaTimeS) * 75; 
 	}
-
-	std::cout << closestLeft << std::endl;
 }
 
 void Fish::Draw() {
