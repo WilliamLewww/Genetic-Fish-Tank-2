@@ -110,14 +110,28 @@ void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &righ
 				break;
 			case 0:
 				for (int x = 0; x < foodList.size(); x++) {
-					if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) >= foodList[x].position.y + (foodList[x].height / 2)) {
-						if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
-							minDistanceLeft = GetRelativePosition(foodList[x]);
+					if (rotation > 90 && rotation < 270) {
+						if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) <= foodList[x].position.y + (foodList[x].height / 2)) {
+							if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
+								minDistanceLeft = GetRelativePosition(foodList[x]);
+							}
+						}
+						if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) > foodList[x].position.y + (foodList[x].height / 2)) {
+							if (minDistanceRight < 0 || GetRelativePosition(foodList[x]) < minDistanceRight) {
+								minDistanceRight = GetRelativePosition(foodList[x]);
+							}
 						}
 					}
-					if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) < foodList[x].position.y + (foodList[x].height / 2)) {
-						if (minDistanceRight < 0 || GetRelativePosition(foodList[x]) < minDistanceRight) {
-							minDistanceRight = GetRelativePosition(foodList[x]);
+					else {
+						if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) >= foodList[x].position.y + (foodList[x].height / 2)) {
+							if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
+								minDistanceLeft = GetRelativePosition(foodList[x]);
+							}
+						}
+						if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) < foodList[x].position.y + (foodList[x].height / 2)) {
+							if (minDistanceRight < 0 || GetRelativePosition(foodList[x]) < minDistanceRight) {
+								minDistanceRight = GetRelativePosition(foodList[x]);
+							}
 						}
 					}
 				}
