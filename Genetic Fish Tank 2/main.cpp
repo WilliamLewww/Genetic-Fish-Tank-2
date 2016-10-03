@@ -53,7 +53,7 @@ void Quit() {
 }
 
 void LoadContent() {
-	GenerateFood(5);
+	GenerateFood(1);
 	testFish.LoadContent();
 }
 
