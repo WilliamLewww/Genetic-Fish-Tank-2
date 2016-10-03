@@ -71,12 +71,7 @@ void Fish::Update(int gameTime) {
 void Fish::Draw() {
 	DrawTriangle(position, width, height, rotation);
 	DrawNodeNetwork(nodeNetwork, Vector2(400, 400));
-	if (position.x + (width / 2) <= foodList[0].position.x + (foodList[0].width / 2)) {
-		DrawLine(Vector2(position.x + width / 2, position.y + height / 2), Vector2(foodList[0].position.x, -(GetSlope(rotation) * foodList[0].position.x) + position.y + (height / 2)));
-	}
-	else {
-		DrawLine(Vector2(position.x + width / 2, position.y + height / 2), Vector2(foodList[0].position.x, (GetSlope(rotation) * foodList[0].position.x) + position.y + (height / 2)));
-	}
+	DrawLine(Vector2(position.x + width / 2, position.y + height / 2), Vector2(foodList[0].position.x, -(GetSlope(rotation) * (foodList[0].position.x - (position.x + width / 2))) + position.y + (height / 2)));
 }
 
 void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &right) {
@@ -115,28 +110,14 @@ void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &righ
 				break;
 			case 0:
 				for (int x = 0; x < foodList.size(); x++) {
-					if (position.x + (width / 2) <= foodList[x].position.x + (foodList[x].width / 2)) {
-						if (-(GetSlope(rotation) * foodList[x].position.x) + position.y + (height / 2) >= foodList[x].position.y + (foodList[x].height / 2)) {
-							if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
-								minDistanceLeft = GetRelativePosition(foodList[x]);
-							}
-						}
-						if (-(GetSlope(rotation) * foodList[x].position.x) + position.y + (height / 2) < foodList[x].position.y + (foodList[x].height / 2)) {
-							if (minDistanceRight < 0 || GetRelativePosition(foodList[x]) < minDistanceRight) {
-								minDistanceRight = GetRelativePosition(foodList[x]);
-							}
+					if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) >= foodList[x].position.y + (foodList[x].height / 2)) {
+						if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
+							minDistanceLeft = GetRelativePosition(foodList[x]);
 						}
 					}
-					else {
-						if ((GetSlope(rotation) * foodList[x].position.x) + position.y + (height / 2) >= foodList[x].position.y + (foodList[x].height / 2)) {
-							if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
-								minDistanceLeft = GetRelativePosition(foodList[x]);
-							}
-						}
-						if ((GetSlope(rotation) * foodList[x].position.x) + position.y + (height / 2) < foodList[x].position.y + (foodList[x].height / 2)) {
-							if (minDistanceRight < 0 || GetRelativePosition(foodList[x]) < minDistanceRight) {
-								minDistanceRight = GetRelativePosition(foodList[x]);
-							}
+					if (-(GetSlope(rotation) * (foodList[x].position.x - (position.x + width / 2))) + position.y + (height / 2) < foodList[x].position.y + (foodList[x].height / 2)) {
+						if (minDistanceRight < 0 || GetRelativePosition(foodList[x]) < minDistanceRight) {
+							minDistanceRight = GetRelativePosition(foodList[x]);
 						}
 					}
 				}
