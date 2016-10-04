@@ -32,7 +32,8 @@ void Fish::LoadContent() {
 void Fish::Update(int gameTime) {
 	float deltaTimeS = (float)(gameTime) / 1000;
 
-	if (rotation >= 360) rotation -= 360;
+	if (rotation > 360) rotation -= 360;
+	if (rotation == 0) rotation = 360;
 
 	if (position.x > SCREENWIDTH) position.x = 0 - width;
 	if (position.x + width < 0) position.x = SCREENWIDTH;
@@ -79,7 +80,7 @@ void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &righ
 		double minDistanceLeft = -1, minDistanceRight = -1;
 		switch (GetLine(rotation)) {
 			case -1:
-				for (int x = 0; x < foodList.size(); x++) {
+				/*for (int x = 0; x < foodList.size(); x++) {
 					if (foodList[x].position.x < position.x) {
 						if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
 							minDistanceLeft = GetRelativePosition(foodList[x]);
@@ -92,9 +93,10 @@ void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &righ
 						}
 					}
 				}
-				break;
+				break;*/
+				return;
 			case 1:
-				for (int x = 0; x < foodList.size(); x++) {
+				/*for (int x = 0; x < foodList.size(); x++) {
 					if (foodList[x].position.y < position.y) {
 						if (minDistanceLeft < 0 || GetRelativePosition(foodList[x]) < minDistanceLeft) {
 							minDistanceLeft = GetRelativePosition(foodList[x]);
@@ -107,7 +109,8 @@ void Fish::GetClosestFood(std::vector<Food> foodList, double &left, double &righ
 						}
 					}
 				}
-				break;
+				break;*/
+				return;
 			case 0:
 				for (int x = 0; x < foodList.size(); x++) {
 					if (rotation > 90 && rotation < 270) {
