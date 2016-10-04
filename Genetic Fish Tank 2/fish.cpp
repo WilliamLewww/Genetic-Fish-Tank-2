@@ -38,13 +38,6 @@ void Fish::Update(int gameTime) {
 	if (position.x > SCREENWIDTH) position.x = 0 - width;
 	if (position.x + width < 0) position.x = SCREENWIDTH;
 	if (position.y > SCREENHEIGHT) position.y = 0 - height;
-	if (position.y + height < 0) position.y = SCREENHEIGHT;
-	
-	if (network.outputLayer[0].value >= 0.5) {
-		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
-		direction.Normalize();
-		//position += (direction * deltaTimeS) * 75;
-	}
 
 	GetClosestFood(foodList, closestLeft, closestRight);
 	if (closestLeft <= range && closestLeft != -1) { SetNeuron(network, network.inputLayer[0], ((range - closestLeft) / range)); }
@@ -52,8 +45,14 @@ void Fish::Update(int gameTime) {
 	if (closestRight <= range && closestRight != -1) { SetNeuron(network, network.inputLayer[1], ((range - closestRight) / range)); }
 	else { SetNeuron(network, network.inputLayer[1], 0); }
 
-	//if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) rotation += 75 * deltaTimeS;
-	//if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
+	if (network.outputLayer[0].value >= 0.5) {
+		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
+		direction.Normalize();
+		position += (direction * deltaTimeS) * 75;
+	}
+
+	if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) rotation += 75 * deltaTimeS;
+	if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
 
 	///Theoretical Movement
 	//if (network.inputLayer[0].value == 1) rotation += 75 * deltaTimeS;
