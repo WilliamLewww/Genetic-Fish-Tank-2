@@ -43,6 +43,7 @@ void SetupConnectionsRandom(NeuralNetwork& network) {
 void UpdateNetwork(NeuralNetwork& network) {
 	for (int x = 0; x < network.inputLayer.size(); x++) {
 		for (int y = 0; y < network.inputLayer[x].synapseList.size(); y++) {
+			network.inputLayer[x].synapseList[y].connectedNeuron->value = 0;
 			network.inputLayer[x].synapseList[y].connectedNeuron->value += double(network.inputLayer[x].synapseList[y].weight * network.inputLayer[x].value);
 			network.inputLayer[x].synapseList[y].connectedNeuron->value = network.inputLayer[x].synapseList[y].connectedNeuron->Sigmoid();
 

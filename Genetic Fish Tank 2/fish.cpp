@@ -38,6 +38,7 @@ void Fish::Update(int gameTime) {
 	if (position.x > SCREENWIDTH) position.x = 0 - width;
 	if (position.x + width < 0) position.x = SCREENWIDTH;
 	if (position.y > SCREENHEIGHT) position.y = 0 - height;
+	if (position.y + height < 0) position.y = SCREENHEIGHT;
 
 	GetClosestFood(foodList, closestLeft, closestRight);
 	if (closestLeft <= range && closestLeft != -1) { SetNeuron(network, network.inputLayer[0], ((range - closestLeft) / range)); }
