@@ -3,10 +3,11 @@
 int GetLine(double rotation);
 double GetSlope(double rotation);
 
+std::vector<Fish> fishList;
+
 Fish::Fish() {
 	srand(time(NULL));
 	position = Vector2(rand() % SCREENWIDTH, rand() % SCREENHEIGHT);
-	position = Vector2(50, 50);
 	width = 25; height = 25;
 	rotation = rand() % 360;
 }
@@ -25,8 +26,6 @@ void Fish::LoadContent() {
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);
-	SetNeuron(network, network.inputLayer[0], 1);
-	SetNeuron(network, network.inputLayer[1], 1);
 }
 
 void Fish::Update(int gameTime) {
@@ -56,17 +55,17 @@ void Fish::Update(int gameTime) {
 	if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
 
 	///Theoretical Movement
-	//if (network.inputLayer[0].value == 1) rotation += 75 * deltaTimeS;
-	//if (network.inputLayer[1].value == 1) rotation -= 75 * deltaTimeS;
+	//if (network.inputLayer[0].value > 0) rotation += 75 * deltaTimeS;
+	//if (network.inputLayer[1].value > 0) rotation -= 75 * deltaTimeS;
 
 	///User Movement
-	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end()) { rotation += 50 * deltaTimeS; }
+	/*if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end()) { rotation += 50 * deltaTimeS; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end()) { rotation -= 50 * deltaTimeS; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end()) { 
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
 		position += (direction * deltaTimeS) * 75; 
-	}
+	}*/
 }
 
 void Fish::Draw() {
@@ -163,4 +162,20 @@ int GetLine(double rotation) {
 double GetSlope(double rotation) {
 	if (rotation == 0 || (int)rotation % 90 == 0) return 0;
 	return tan((rotation + 180) * M_PI / 180);
+}
+
+void GenerateFish(int count) {
+	double rotation = rand() % 360, randomX = rand() % (SCREENWIDTH - 10), randomY = rand() % (SCREENHEIGHT - 10);
+	Fish tempFish;
+	for (int x = 0; x < count; x++) {
+		tempFish = Fish(Vector2(randomX, randomY), 25, 25, rotation);
+		tempFish.LoadContent();
+		fishList.push_back(tempFish);
+	}
+}
+
+void DrawFish() {
+	for (auto& fish : fishList) {
+		fish.Draw();
+	}
 }
