@@ -27,7 +27,5 @@ public:
 	double GetRelativePosition(Food food);
 };
 
-extern std::vector<Fish> fishList;
-
-void GenerateFish(int count);
-void DrawFish();
+void GenerateFish(std::vector<Fish> &fishList, int count);
+void DrawFish(std::vector<Fish> fishList);

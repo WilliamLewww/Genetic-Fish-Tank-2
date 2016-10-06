@@ -3,8 +3,6 @@
 int GetLine(double rotation);
 double GetSlope(double rotation);
 
-std::vector<Fish> fishList;
-
 Fish::Fish() {
 	srand(time(NULL));
 	position = Vector2(rand() % SCREENWIDTH, rand() % SCREENHEIGHT);
@@ -164,7 +162,7 @@ double GetSlope(double rotation) {
 	return tan((rotation + 180) * M_PI / 180);
 }
 
-void GenerateFish(int count) {
+void GenerateFish(std::vector<Fish>& fishList, int count) {
 	double rotation = rand() % 360, randomX = rand() % (SCREENWIDTH - 10), randomY = rand() % (SCREENHEIGHT - 10);
 	Fish tempFish;
 	for (int x = 0; x < count; x++) {
@@ -174,7 +172,7 @@ void GenerateFish(int count) {
 	}
 }
 
-void DrawFish() {
+void DrawFish(std::vector<Fish> fishList) {
 	for (auto& fish : fishList) {
 		fish.Draw();
 	}
