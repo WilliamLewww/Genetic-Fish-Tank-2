@@ -12,7 +12,9 @@ public:
 	double rotation;
 
 	double range = 500;
-	double closestLeft = -1, closestRight = -1;
+	double closest = -1, closestLeft = -1, closestRight = -1;
+
+	double fitnessDistance = -1;
 
 	NeuralNetwork network;
 	NodeNetwork nodeNetwork;

@@ -43,6 +43,10 @@ void Fish::Update(int gameTime) {
 	if (closestRight <= range && closestRight != -1) { SetNeuron(network, network.inputLayer[1], ((range - closestRight) / range)); }
 	else { SetNeuron(network, network.inputLayer[1], 0); }
 
+	closest = std::max(closestLeft, closestRight);
+	fitnessDistance = ((range - closest) / range);
+	std::cout << fitnessDistance << std::endl;
+
 	if (network.outputLayer[0].value >= 0.5) {
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
@@ -57,13 +61,13 @@ void Fish::Update(int gameTime) {
 	//if (network.inputLayer[1].value > 0) rotation -= 75 * deltaTimeS;
 
 	///User Movement
-	/*if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end()) { rotation += 50 * deltaTimeS; }
+	if (std::find(keyList.begin(), keyList.end(), SDLK_LCTRL) != keyList.end()) { rotation += 50 * deltaTimeS; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end()) { rotation -= 50 * deltaTimeS; }
 	if (std::find(keyList.begin(), keyList.end(), SDLK_SPACE) != keyList.end()) { 
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
 		position += (direction * deltaTimeS) * 75; 
-	}*/
+	}
 }
 
 void Fish::Draw() {
