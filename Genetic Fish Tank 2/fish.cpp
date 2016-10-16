@@ -18,9 +18,9 @@ Fish::Fish(Vector2 positionParam, int widthParam, int heightParam, double rotati
 }
 
 void Fish::LoadContent() {
-	SetupLayer(network.inputLayer, 2);
-	SetupHiddenLayer(network.hiddenLayer, 1, 4);
-	SetupLayer(network.outputLayer, 3);
+	SetupLayer(network.inputLayer, 2, 0);
+	SetupHiddenLayer(network.hiddenLayer, 1, 4, 5);
+	SetupLayer(network.outputLayer, 3, 1);
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);

@@ -1,17 +1,33 @@
 #include "neuralnetwork.h"
 #include <iostream>
 
-void SetupLayer(std::vector<Neuron>& layer, int count) {
+void SetupLayer(std::vector<Neuron>& layer, int count, int transfer[]) {
 	for (int x = 0; x < count; x++) {
-		layer.push_back(Neuron());
+		layer.push_back(Neuron(transfer[x]));
 	}
 }
 
-void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount) {
+void SetupLayer(std::vector<Neuron>& layer, int count, int transfer) {
+	for (int x = 0; x < count; x++) {
+		layer.push_back(Neuron(transfer));
+	}
+}
+
+void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer[]) {
 	for (int x = 0; x < layerCount; x++) {
 		std::vector<Neuron> tempLayer;
 		for (int y = 0; y < neuronCount; y++) {
-			tempLayer.push_back(Neuron());
+			tempLayer.push_back(Neuron(transfer[(x * neuronCount) + y]));
+		}
+		layer.push_back(tempLayer);
+	}
+}
+
+void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer) {
+	for (int x = 0; x < layerCount; x++) {
+		std::vector<Neuron> tempLayer;
+		for (int y = 0; y < neuronCount; y++) {
+			tempLayer.push_back(Neuron(transfer));
 		}
 		layer.push_back(tempLayer);
 	}
@@ -45,11 +61,7 @@ void UpdateNetwork(NeuralNetwork& network) {
 		for (int y = 0; y < network.inputLayer[x].synapseList.size(); y++) {
 			network.inputLayer[x].synapseList[y].connectedNeuron->value = 0;
 			network.inputLayer[x].synapseList[y].connectedNeuron->value += double(network.inputLayer[x].synapseList[y].weight * network.inputLayer[x].value);
-			network.inputLayer[x].synapseList[y].connectedNeuron->value = network.inputLayer[x].synapseList[y].connectedNeuron->Sigmoid();
-
-			if (network.inputLayer[x].synapseList[y].connectedNeuron->value <= 0.5) {
-				network.inputLayer[x].synapseList[y].connectedNeuron->value = 0;
-			}
+			network.inputLayer[x].synapseList[y].connectedNeuron->value = network.inputLayer[x].synapseList[y].connectedNeuron->TransferFunction(network.inputLayer[x].synapseList[y].connectedNeuron->transferValue);
 		}
 	}
 
@@ -58,11 +70,7 @@ void UpdateNetwork(NeuralNetwork& network) {
 			for (int y = 0; y < network.hiddenLayer[z][x].synapseList.size(); y++) {
 				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value = 0;
 				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value += double(network.hiddenLayer[z][x].synapseList[y].weight * network.hiddenLayer[z][x].value);
-				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value = network.hiddenLayer[z][x].synapseList[y].connectedNeuron->Sigmoid();
-
-				if (network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value <= 0.5) {
-					network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value = 0;
-				}
+				network.hiddenLayer[z][x].synapseList[y].connectedNeuron->value = network.hiddenLayer[z][x].synapseList[y].connectedNeuron->TransferFunction(network.hiddenLayer[z][x].synapseList[y].connectedNeuron->transferValue);
 			}
 		}
 	}
