@@ -8,11 +8,11 @@ struct Synapse;
 
 struct Neuron {
 	int transferValue = -1;
-	double value = 0;
+	double value = 0, bias = 0;
 	std::vector<Synapse> synapseList;
 
 	Neuron() { }
-	Neuron(int transfer) { transferValue = transfer; }
+	Neuron(int transfer, double biasParam) { transferValue = transfer; bias = biasParam; }
 
 	inline double TransferFunction(int type) {
 		switch (type) {
@@ -73,10 +73,10 @@ struct NeuralNetwork {
 	std::vector<Neuron> outputLayer;
 };
 
-void SetupLayer(std::vector<Neuron>& layer, int count, int transfer[]);
-void SetupLayer(std::vector<Neuron>& layer, int count, int transfer);
-void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer[]);
-void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer);
+void SetupLayer(std::vector<Neuron>& layer, int count, int transfer[], double bias[]);
+void SetupLayer(std::vector<Neuron>& layer, int count, int transfer, double bias);
+void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer[], double bias[]);
+void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer, double bias);
 void SetupConnectionsRandom(NeuralNetwork& network);
 void UpdateNetwork(NeuralNetwork& network);
 void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value);

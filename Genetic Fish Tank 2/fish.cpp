@@ -18,9 +18,9 @@ Fish::Fish(Vector2 positionParam, int widthParam, int heightParam, double rotati
 }
 
 void Fish::LoadContent() {
-	SetupLayer(network.inputLayer, 2, 0);
-	SetupHiddenLayer(network.hiddenLayer, 1, 4, 5);
-	SetupLayer(network.outputLayer, 3, 1);
+	SetupLayer(network.inputLayer, 2, -1, 0);
+	SetupHiddenLayer(network.hiddenLayer, 1, 4, 1, 0);
+	SetupLayer(network.outputLayer, 3, 0, 0);
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);
@@ -43,18 +43,19 @@ void Fish::Update(int gameTime) {
 	if (closestRight <= range && closestRight != -1) { SetNeuron(network, network.inputLayer[1], ((range - closestRight) / range)); }
 	else { SetNeuron(network, network.inputLayer[1], 0); }
 
+	std::cout << network.hiddenLayer[0][0].value << std::endl;
+
 	closest = std::max(closestLeft, closestRight);
 	fitnessDistance = ((range - closest) / range);
-	std::cout << fitnessDistance << std::endl;
 
-	if (network.outputLayer[0].value >= 0.5) {
+	if (network.outputLayer[0].value == 1) {
 		Vector2 direction = Vector2((float)cos((-rotation * M_PI) / 180), sin((-rotation * M_PI) / 180));
 		direction.Normalize();
-		position += (direction * deltaTimeS) * 75;
+		//position += (direction * deltaTimeS) * 75;
 	}
 
-	if (network.outputLayer[1].value >= 0.5 && network.outputLayer[2].value < network.outputLayer[1].value) rotation += 75 * deltaTimeS;
-	if (network.outputLayer[2].value >= 0.5 && network.outputLayer[1].value < network.outputLayer[2].value) rotation -= 75 * deltaTimeS;
+	//if (network.outputLayer[1].value == 1) rotation += 75 * deltaTimeS;
+	//if (network.outputLayer[2].value == 1) rotation -= 75 * deltaTimeS;
 
 	///Theoretical Movement
 	//if (network.inputLayer[0].value > 0) rotation += 75 * deltaTimeS;
