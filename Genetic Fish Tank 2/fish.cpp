@@ -19,8 +19,8 @@ Fish::Fish(Vector2 positionParam, int widthParam, int heightParam, double rotati
 
 void Fish::LoadContent() {
 	SetupLayer(network.inputLayer, 2, -1, 0);
-	SetupHiddenLayer(network.hiddenLayer, 1, 4, 1, 0);
-	SetupLayer(network.outputLayer, 3, 0, 0);
+	SetupHiddenLayer(network.hiddenLayer, 1, 4, 5, 0);
+	SetupLayer(network.outputLayer, 3, 0, -0.5);
 	SetupConnectionsRandom(network);
 	UpdateNetwork(network);
 	SetupNodeNetwork(&network, nodeNetwork);
@@ -43,7 +43,7 @@ void Fish::Update(int gameTime) {
 	if (closestRight <= range && closestRight != -1) { SetNeuron(network, network.inputLayer[1], ((range - closestRight) / range)); }
 	else { SetNeuron(network, network.inputLayer[1], 0); }
 
-	std::cout << network.hiddenLayer[0][0].value << std::endl;
+	std::cout << network.hiddenLayer[0][0].value << ":" << network.hiddenLayer[0][1].value << ":" << network.hiddenLayer[0][2].value << std::endl;
 
 	closest = std::max(closestLeft, closestRight);
 	fitnessDistance = ((range - closest) / range);

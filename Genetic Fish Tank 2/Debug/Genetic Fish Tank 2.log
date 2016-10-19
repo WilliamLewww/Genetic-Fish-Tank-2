@@ -1,17 +1,5 @@
-﻿  neuralnetwork.cpp
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(37): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(38): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(39): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(44): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(45): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(46): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(52): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(53): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(60): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(61): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(69): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(70): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.cpp(71): warning C4018: '<': signed/unsigned mismatch
-g:\projects\genetic fish tank 2\genetic fish tank 2\neuralnetwork.h(56): warning C4715: 'Neuron::TransferFunction': not all control paths return a value
+﻿  fish.cpp
+g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+g:\projects\genetic fish tank 2\genetic fish tank 2\fish.cpp(117): warning C4018: '<': signed/unsigned mismatch
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.exe
   Genetic Fish Tank 2.vcxproj -> G:\Projects\Genetic Fish Tank 2\Debug\Genetic Fish Tank 2.pdb (Partial PDB)

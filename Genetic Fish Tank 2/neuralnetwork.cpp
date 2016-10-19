@@ -37,6 +37,29 @@ void SetupConnectionsRandom(NeuralNetwork& network) {
 	srand(time(NULL));
 	for (int x = 0; x < network.inputLayer.size(); x++) {
 		for (int y = 0; y < network.hiddenLayer[0].size(); y++) {
+			network.inputLayer[x].synapseList.push_back(Synapse(&network.hiddenLayer[0][y], double(rand() % 10 + 1) / 10));
+		}
+	}
+
+	for (int z = 0; z < network.hiddenLayer.size() - 1; z++) {
+		for (int x = 0; x < network.hiddenLayer[z].size(); x++) {
+			for (int y = 0; y < network.hiddenLayer[z + 1].size(); y++) {
+				network.hiddenLayer[z][x].synapseList.push_back(Synapse(&network.hiddenLayer[z + 1][y], double(rand() % 10 + 1) / 10));
+			}
+		}
+	}
+
+	for (int x = 0; x < network.hiddenLayer[network.hiddenLayer.size() - 1].size(); x++) {
+		for (int y = 0; y < network.outputLayer.size(); y++) {
+			network.hiddenLayer[network.hiddenLayer.size() - 1][x].synapseList.push_back(Synapse(&network.outputLayer[y], double(rand() % 10 + 1) / 10));
+		}
+	}
+}
+
+void SetupConnectionsRandomNegative(NeuralNetwork& network) {
+	srand(time(NULL));
+	for (int x = 0; x < network.inputLayer.size(); x++) {
+		for (int y = 0; y < network.hiddenLayer[0].size(); y++) {
 			network.inputLayer[x].synapseList.push_back(Synapse(&network.hiddenLayer[0][y], double(rand() % 19 + (-9)) / 10));
 		}
 	}

@@ -78,5 +78,6 @@ void SetupLayer(std::vector<Neuron>& layer, int count, int transfer, double bias
 void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer[], double bias[]);
 void SetupHiddenLayer(std::vector<std::vector<Neuron>>& layer, int layerCount, int neuronCount, int transfer, double bias);
 void SetupConnectionsRandom(NeuralNetwork& network);
+void SetupConnectionsRandomNegative(NeuralNetwork& network);
 void UpdateNetwork(NeuralNetwork& network);
 void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value);
