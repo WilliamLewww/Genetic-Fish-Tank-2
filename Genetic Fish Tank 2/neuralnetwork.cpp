@@ -105,3 +105,8 @@ void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value) {
 	neuron.value = value;
 	UpdateNetwork(network);
 }
+
+void SetSynapse(NeuralNetwork& network, Synapse& synapse, double weight) {
+	synapse.weight = weight;
+	UpdateNetwork(network);
+}

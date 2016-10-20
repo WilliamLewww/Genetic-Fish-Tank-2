@@ -81,3 +81,4 @@ void SetupConnectionsRandom(NeuralNetwork& network);
 void SetupConnectionsRandomNegative(NeuralNetwork& network);
 void UpdateNetwork(NeuralNetwork& network);
 void SetNeuron(NeuralNetwork& network, Neuron& neuron, double value);
+void SetSynapse(NeuralNetwork& network, Synapse& synapse, double weight);

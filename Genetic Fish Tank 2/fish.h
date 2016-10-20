@@ -14,7 +14,7 @@ public:
 	double range = 500;
 	double closest = -1, closestLeft = -1, closestRight = -1;
 
-	double fitnessDistance = -1;
+	double fitnessDistance = -1, maxFitnessDistance = -1;
 
 	NeuralNetwork network;
 	NodeNetwork nodeNetwork;
